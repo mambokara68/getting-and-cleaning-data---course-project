@@ -1,7 +1,6 @@
 getting-and-cleaning-data---course-project
 ==========================================
-<h1>How does my script work??</h1>
-Nothing special to note. You have to run the entire script and wait for the finale result.
+<h3>Nothing special to note. You have to run the entire script and wait for the finale result.</h3>
 
 You must take care of the location of the Samsung files to be loaded, they MUST be directly in the working directory (no directory Train or test), all the files are in one unique directory, the wd...
 
