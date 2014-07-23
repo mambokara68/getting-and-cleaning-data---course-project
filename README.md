@@ -1,9 +1,14 @@
 getting-and-cleaning-data---course-project
 ==========================================
-<h1>Doodle Paint5 for Pokki</h1>
-Doodle Paint5 is a simple HTML5 painting program that uses the Canvas element and mootools JavaScript library.
-It runs on the Pokki appstore (http://pokki.com)
- 
+<h1>How does my script work??</h1>
+Nothing special to note. You have to run the entire script and wait for the finale result.
+
+You must take care of the location of the Samsung files to be loaded, they MUST be directly in the working directory (no directory Train or test), all the files are in one unique directory, the wd...
+
+X train and Xtest data take a long time to be read, don't worry...
+
+Explanation of the different steps of my script are written on the script.
+
 <h2>Important source files</h2>
 app.js - Main js entrypoint for Doodle Paint<br />
 popup.js - Pokki popup wrapper<br />
