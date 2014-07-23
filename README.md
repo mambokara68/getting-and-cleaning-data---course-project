@@ -8,6 +8,6 @@ X train and Xtest data take a long time to be read, don't worry...
 
 Explanation of the different steps of my script are written on the script.
 
-###Wich packages must be loaded?
+###Wich packages must be installed?
 
 reshape2 and arrayhelpers
