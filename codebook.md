@@ -1,65 +1,31 @@
 #my code book
 
-rappeler les données analysées (copier fichier features)
-Décrire les différentes lignes et colonnes du tableau activities, features. Expliquer la signification des noms de colonne
 
-Citer les différents vecteurs et data frame présent dans l'environnement et au cours du script.
+#Which features where selected ?
+I choose to select all the features with mean and std written in the name except 
+angle(tBodyAccMean,gravity) angle(tBodyAccJerkMean),gravityMean) angle(tBodyGyroMean,gravityMean) angle(tBodyGyroJerkMean,gravityMean) angle(X,gravityMean) angle(Y,gravityMean) angle(Z,gravityMean which are angle measurement without mean calculation. But I extracted « meanFreq » column  features which are average values.
 
-X_test 
-X_train  "X_train.txt")
-Y_test("y_test.txt")
-Y_train("y_train.txt")
-subj_test("subject_test.txt")
-subj_train("subject_train.txt")
-features("features.txt")
+#Different data and values obtained during execution of  the script
+|name|class|size|dim|description|
+|----------------|----------------|--------------|-----------------|---------------|
+|X_test¬|data frame¬|	12.7Mb| 2947 obs of 561 variables|  obtained from : ("X_test.txt") different  measurements for each subject in the test group|
+|X_train| data frame|	31.5Mb| 7352 obs of 561 variables | obtained from : ("X_train.txt") different  measurements for each subject in the training group|
+|Y_test|data frame|	12.2kb| 2947 obs of 1 variable|  obtained from : ("y_test.txt") list of activities numbers in the test group, same rownumber as X_test|
+|Y_train| data frame|	29.4kb| 7352 obs of 1 variable|  obtained from : ("y_train.txt") list of activities numbers in the training group, same rownumber as X_train|
+|subj_test| data frame|	 12.2kb| 2947 obs of 1 variable|  obtained from : ("subject_test.txt") list of subject’s  numbers in the test group, same rownumber as X_test|
+|subj_train| data frame|29.4kb| 7352 obs of 1 variable|  obtained from : ("subject_train.txt") list of subject’s numbers in the training group, same rownumber as X_train|
+|features| data frame|42.9kb| 561 obs of 2 variables|  obtained from : ("features.txt") number and names of the different features measured, corresponds to the columns of X_ test and train|
+|completedataset| data frame|44.1 Mb| 10299 obs of 561 variables|  obtained with rbind(X_test,X_train) |
 
-
-completedataset (X_test,X_train)
-allcolumnnames
-
-meancolnumber
-stdcolnumber
-tobeextractedcolnumber
-meanstddataset
-meancolumnnames
-
-
-colonnes1_2
-
-colonnes1_2[,2]<-as.numeric(colonnes1_2[,2])
-colonnes1_2[,2][colonnes1_2[,2]==1]<-"walking"
-colonnes1_2[,2][colonnes1_2[,2]==2]<-"walking upstairs"
-colonnes1_2[,2][colonnes1_2[,2]==3]<-"walking downstairs"
-colonnes1_2[,2][colonnes1_2[,2]==4]<-"sitting"
-colonnes1_2[,2][colonnes1_2[,2]==5]<-"standing"
-colonnes1_2[,2][colonnes1_2[,2]==6]<-"lying"
-
-
- 
-tidycolname
-
-
-
-meanstddataset
-
-
-# calculation of the mean of each variable for each activity and each subject
-library(reshape2)
-library(arrayhelpers)
-
-sorteddata<-meanstddataset[order(meanstddataset$activity,meanstddataset$subject),]#sorts the data set first by activity and after by subject
-
-melteddata<-melt(sorteddata,id=c("activity","subject"),measure.vars=meancolumnnames)#melt the data to permit calculation of means via the acast function
-tidyfile<-acast(melteddata,subject~activity~variable,mean)#obtention of an array : 30(subjects)x6(activity)x79(mean measurement)
-tidyfile<-array2df(tidyfile,label.x="mean")#transformation of the array in a dataframe to be rearranged (14220 obs. of 4 variables : mean,subject,activity,feature)
-tidyfile<-data.frame(tidyfile[,3],tidyfile[,2],tidyfile[,4],tidyfile[,1])#modifications of the columns order of the data frame :activity,subject,feature,mean
-
-
-finaltidyfile<-data.frame(tidyfile[1:180,1],tidyfile[1:180,2])#rearrange the file (all the data are in one column (the 4th), obtention of 79 columns(one for each feature))
-for (i in seq(0,nrow(tidyfile)-1,by=180)){
-  n<-i+1
-  m<-i+180
-  finaltidyfile<-cbind(finaltidyfile,tidyfile[n:m,4])
-}
-
-colnames(finaltidyfile)<-c("activity","subject",tidycolname) #the last "touch" : adds column names to the data set
+|allcolumnnames| character vector|38.1 kb| 561 values| names of the differents features obtained from  features[,2]) |
+|Meancolnumber| integer vector|224b| : 46 values| range( rang en francais) of the names  containing the « mean » character string|
+|stdcolnumber| integer vector|176b | 33 values| range( rang en francais) of the names  containing the « std » character string |
+|tobextractedcolnumbers| integer vector|360b | 46+33=79 values| sorted column numbers to be extracted from the complete data set to obtain the desired values. |
+|meanstddataset| data frame|6.3Mb| 10299 obs. of 81 variables| data from the « mean » and « std » columns. |
+|Meancolumnnames| character vector|6.2kb| 79 names| names of the features corresponding to the column names. |
+|colonnes1_2| data frame|121.7kb| 10299 obs of 2 variables| (subject number and activities names for both test and training data. |
+|tidycolname |  character vector|6.1kb| 79 values| same as meancolumnnames but tidy names proposed (t->time, f->freq,elimination of – and (), BodyBody->Body) |
+|sorteddata| data frame|6.4 Mb|  10299 obs of 81 variables| same values as meanstddataset  but ordered by activity and by subject. |
+|melteddata| data frame |18.6Mb| 813621 obs of 4 variables| rearrange the values in 4 raws insteed of 81, allows calculation of means via the acast function |
+|tidyfile| array and after transformation a data frame|288kb| 14220 obs of 4 variables| contains the values obtained after averaging the measurements by activity and by subject|
+|finaltidyfile| data frame|125.8kb| 180 obs of 81 variables| final data set with row names and column names. |
