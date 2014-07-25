@@ -8,7 +8,7 @@ angle(tBodyAccMean,gravity) angle(tBodyAccJerkMean),gravityMean) angle(tBodyGyro
 ##Different data and values obtained during execution of  the script
 |name|class|size|dim|description|
 |----------------|----------------|--------------|-----------------|---------------|
-|X_test¬|data frame¬|	12.7Mb| 2947 obs of 561 variables|  obtained from : ("X_test.txt") different  measurements for each subject in the test group|
+|X_test|data frame|	12.7Mb| 2947 obs of 561 variables|  obtained from : ("X_test.txt") different  measurements for each subject in the test group|
 |X_train| data frame|	31.5Mb| 7352 obs of 561 variables | obtained from : ("X_train.txt") different  measurements for each subject in the training group|
 |Y_test|data frame|	12.2kb| 2947 obs of 1 variable|  obtained from : ("y_test.txt") list of activities numbers in the test group, same rownumber as X_test|
 |Y_train| data frame|	29.4kb| 7352 obs of 1 variable|  obtained from : ("y_train.txt") list of activities numbers in the training group, same rownumber as X_train|
