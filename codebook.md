@@ -1,11 +1,11 @@
 #my code book
 
 
-#Which features where selected ?
+##Which features were selected ?
 I choose to select all the features with mean and std written in the name except 
 angle(tBodyAccMean,gravity) angle(tBodyAccJerkMean),gravityMean) angle(tBodyGyroMean,gravityMean) angle(tBodyGyroJerkMean,gravityMean) angle(X,gravityMean) angle(Y,gravityMean) angle(Z,gravityMean which are angle measurement without mean calculation. But I extracted « meanFreq » column  features which are average values.
 
-#Different data and values obtained during execution of  the script
+##Different data and values obtained during execution of  the script
 |name|class|size|dim|description|
 |----------------|----------------|--------------|-----------------|---------------|
 |X_test¬|data frame¬|	12.7Mb| 2947 obs of 561 variables|  obtained from : ("X_test.txt") different  measurements for each subject in the test group|
@@ -16,7 +16,6 @@ angle(tBodyAccMean,gravity) angle(tBodyAccJerkMean),gravityMean) angle(tBodyGyro
 |subj_train| data frame|29.4kb| 7352 obs of 1 variable|  obtained from : ("subject_train.txt") list of subject’s numbers in the training group, same rownumber as X_train|
 |features| data frame|42.9kb| 561 obs of 2 variables|  obtained from : ("features.txt") number and names of the different features measured, corresponds to the columns of X_ test and train|
 |completedataset| data frame|44.1 Mb| 10299 obs of 561 variables|  obtained with rbind(X_test,X_train) |
-
 |allcolumnnames| character vector|38.1 kb| 561 values| names of the differents features obtained from  features[,2]) |
 |Meancolnumber| integer vector|224b| : 46 values| range( rang en francais) of the names  containing the « mean » character string|
 |stdcolnumber| integer vector|176b | 33 values| range( rang en francais) of the names  containing the « std » character string |
